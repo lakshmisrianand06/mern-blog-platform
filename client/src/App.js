@@ -9,7 +9,7 @@ function App() {
 
   const fetchPosts = async () => {
     try {
-      const res = await axios.get("/api/posts");
+      const res = await axios.get("https://mern-blog-platform-three.vercel.app/api/posts");
       setPosts(res.data);
     } catch (err) {
       console.error("Error fetching posts:", err);
@@ -19,19 +19,19 @@ function App() {
   useEffect(() => { fetchPosts(); }, []);
 
   const handleCreate = async (data) => {
-    await axios.post("/api/posts", data);
+    await axios.post("https://mern-blog-platform-three.vercel.app/api/posts", data);
     fetchPosts();
   };
 
   const handleUpdate = async (id, data) => {
-    await axios.put(`/api/posts/${id}`, data);
+    await axios.put(`https://mern-blog-platform-three.vercel.app/api/posts/${id}`, data);
     setEditing(null);
     fetchPosts();
   };
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this post?")) {
-      await axios.delete(`/api/posts/${id}`);
+      await axios.delete(`https://mern-blog-platform-three.vercel.app/api/posts/${id}`);
       fetchPosts();
     }
   };
